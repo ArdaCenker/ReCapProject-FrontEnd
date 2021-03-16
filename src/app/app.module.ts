@@ -10,6 +10,9 @@ import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
+import { CarDtoComponent } from './components/car-dto/car-dto.component';
+import { RentalDtoComponent } from './components/rental-dto/rental-dto.component';
+import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { NaviComponent } from './components/navi/navi.component';
     CustomerComponent,
     RentalComponent,
     NaviComponent,
+    CarDtoComponent,
+    RentalDtoComponent,
+    ImageComponent,
   ],
   imports: [
     BrowserModule,
