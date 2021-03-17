@@ -1,23 +1,37 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
+<h4>Car List</h4>
 <table *ngIf="dataLoaded==true" class="table">
-  <thead>
+  <thead class="thead-dark">
     <tr>
-      <th>Araç Kodu</th>
-      <th>Model Yılı</th>
-      <th>Marka Kodu</th>
-      <th>Renk Kodu</th>
-      <th>Günlük Fiyat</th>
-      <th>Açıklama</th>
+      <th scope="col">Id</th>
+      <th scope="col">Brand Id</th>
+      <th scope="col">Color Id</th>
+      <th scope="col">Model Year</th>
+      <th scope="col">Daily Price</th>
+      <th scope="col">Description</th>
+      <th></th>
     </tr>
   </thead>
-  <tr (click)="setCurrentCar(car)" routerLink="/cars/details/{{car.id}}" *ngFor="let car of cars">
-    <td>{{car.id}}</td>
-    <td>{{car.modelYear}}</td>
-    <td>{{car.brandId}}</td>
-    <td>{{car.colorId}}</td>
-    <td>{{car.dailyPrice}}</td>
-    <td>{{car.description}}</td>
-  </tr>
+  <tbody>
+    <tr *ngFor="let car of cars">
+      <td>{{ car.id }}</td>
+      <td>{{ car.brandId }}</td>
+      <td>{{ car.colorId }}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.dailyPrice }} TL</td>
+      <td>{{ car.description }}</td>
+      <td>
+        <button
+          routerLink = "/cars/detail/{{car.id}}"
+          type="button"
+          class="btn btn-xs btn-success"
+          (click)="getCarDetails(car.id)"
+        >
+          Detail
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>

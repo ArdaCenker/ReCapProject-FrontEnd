@@ -12,7 +12,6 @@ import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { CarDtoComponent } from './components/car-dto/car-dto.component';
 import { RentalDtoComponent } from './components/rental-dto/rental-dto.component';
-import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { ImageComponent } from './components/image/image.component';
     NaviComponent,
     CarDtoComponent,
     RentalDtoComponent,
-    ImageComponent,
   ],
   imports: [
     BrowserModule,

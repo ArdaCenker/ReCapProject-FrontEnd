@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
+import { CarDto } from 'src/app/models/carDto';
 import { CarService } from 'src/app/services/car.service';
+import { CarDtoComponent } from '../car-dto/car-dto.component';
 
 @Component({
   selector: 'app-car',
@@ -10,6 +12,7 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
   cars: Car[] = [];
+  carDtos:CarDto[]=[];
   dataLoaded = false;
 
   constructor(private carService:CarService, private activatedRoute:ActivatedRoute) {}
@@ -33,6 +36,14 @@ export class CarComponent implements OnInit {
     })
   }
 
+  getCarDetails(id:number)
+  {
+    this.carService.getCarDetails(id).subscribe(response => {
+      this.carDtos = response.data;
+      this.dataLoaded= true;
+    })
+  }
+
   getCarsByBrandId(brandId:number){
     this.carService.getCarsByBrandId(brandId).subscribe((response) => {
       this.cars = response.data;
@@ -45,9 +56,5 @@ export class CarComponent implements OnInit {
       this.cars = response.data;
       this.dataLoaded= true;
     })
-  }
-
-  setCurrentCar(car:Car){
-
   }
 }
