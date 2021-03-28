@@ -12,8 +12,8 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarDtoComponent implements OnInit {
   carDto: CarDto;
-  carImages:CarImage[]=[];
-  path = "https://localhost:44334/api/wwwroot"
+  carImages:CarImage[];
+  path = "https://localhost:44334"
 
   constructor(private carService:CarService, private carImageService:CarImageService, private activatedRoute:ActivatedRoute) { }
 
