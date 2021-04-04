@@ -1,0 +1,70 @@
+<div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Ödeme</h5></div>
+        <div class="card-body">
+          <form [formGroup]="paymentAddForm">
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="cardOwnerName">Kart Sahibinin Adı</label>
+                <div class="form-group">
+                  <input type="text" id="nameOnTheCard" formControlName="cardOwnerName" class="form-control"  placeholder="Kart Sahibinin Adı" />
+                </div>
+              </div>
+              <div class="mb-3 col-md-6">
+                <label for="cardNumber">Kart Numarası</label>
+                <div class="form-group">
+                  <input type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19"  id="cardNumber" formControlName="cardNumber" class="form-control" placeholder="Card Number" />
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label>Credit Card Expiration Date</label>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+                    <select  name='dateMonth'class="form-select" id='dateMonth' formControlName='dateMonth' placeholder="Month">
+                      <option [ngValue]=1>Ocak</option>
+                      <option [ngValue]=2>Şubat</option>
+                      <option [ngValue]='03'>Mart</option>
+                      <option [ngValue]='04'>Nisan</option>
+                      <option [ngValue]='05'>Mayıs</option>
+                      <option [ngValue]='06'>Haziran</option>
+                      <option [ngValue]='07'>Temmuz</option>
+                      <option [ngValue]='08'>Ağustos</option>
+                      <option [ngValue]='09'>Eylül</option>
+                      <option [ngValue]='10'>Ekim</option>
+                      <option [ngValue]='11'>Kasım</option>
+                      <option [ngValue]='12'>Aralık</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <select name='dateYear' class="form-select" formControlName="dateYear" id='dateYear' placeholder="Year">
+                      <option [ngValue]='21'>2021</option>
+                      <option [ngValue]='22'>2022</option>
+                      <option [ngValue]='23'>2023</option>
+                      <option [ngValue]='24'>2024</option>
+                      <option [ngValue]='25'>2025</option>
+                      <option [ngValue]='26'>2026</option>
+                      <option [ngValue]='27'>2027</option>
+                    </select>
+                  </div>
+  
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="tel"  id="cvvCode" maxlength="3"  formControlName="cvvCode" class="form-control" placeholder="CVV" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-dark float-end" (click)="addPayment()" data-bs-dismiss="modal">
+            Ödeme Ekle
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

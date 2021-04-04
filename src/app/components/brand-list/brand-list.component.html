@@ -1,0 +1,19 @@
+<div class="mb-3">
+    <label for="filterText" class="form-label">Marka ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Marka adı girin">
+</div>  
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let brand of brands | filterBrandPipe:filterText" >
+            <td>{{brand.brandName}}</td>
+            <td class="col-md-2"><button routerLink = "/cars/brand/{{brand.brandId}}" type="button" class="btn btn-xs btn-success">Araçları göster</button></td>
+        </tr>
+    </tbody>
+</table>
+  

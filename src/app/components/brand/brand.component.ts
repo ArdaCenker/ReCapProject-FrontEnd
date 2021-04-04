@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 
@@ -11,7 +11,10 @@ export class BrandComponent implements OnInit {
 
   brands:Brand[] = [];
   dataLoaded = false;
+  allBrand:Brand;
   currentBrand:Brand = {brandId : 0, brandName: ""} ;
+  @Output() brandId = new EventEmitter<string>();
+  filterText = "";
 
   constructor(private brandService:BrandService) {}
 
@@ -26,9 +29,13 @@ export class BrandComponent implements OnInit {
     })
   }
 
-  setCurrentBrand(brand:Brand){
-    this.currentBrand = brand;
+  setCurrentBrand(){
+    this.brandId.emit(this.currentBrand?.brandId.toString())
   }
+
+  allBrandSelected(){
+    return this.currentBrand == undefined ? true : false;
+  } 
 
   getCurrentBrandClass(brand:Brand){
     if(brand == this.currentBrand){

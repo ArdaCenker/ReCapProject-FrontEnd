@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { CarDto } from 'src/app/models/carDto';
+import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
-import { CarDtoComponent } from '../car-dto/car-dto.component';
 
 @Component({
   selector: 'app-car',
@@ -14,6 +14,7 @@ export class CarComponent implements OnInit {
   cars: Car[] = [];
   carDtos:CarDto[]=[];
   dataLoaded = false;
+  filterText="";
 
   constructor(private carService:CarService, private activatedRoute:ActivatedRoute) {}
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Color } from 'src/app/models/color';
 import { ColorService } from 'src/app/services/color.service';
 
@@ -11,7 +11,10 @@ export class ColorComponent implements OnInit {
 
   colors:Color[] = [];
   dataLoaded = false;
+  allColor:Color;
   currentColor:Color = {colorId:0, colorName:""};
+  filterText="";
+  @Output() colorId = new EventEmitter<string>();
 
   constructor(private colorService:ColorService) {}
 
@@ -26,9 +29,12 @@ export class ColorComponent implements OnInit {
     })
   }
 
-  setCurrentColor(color:Color){
-    this.currentColor = color;
+  setCurrentColor(){
+    this.colorId.emit(this.currentColor?.colorId.toString())
   }
+  allColorSelected(){
+    return this.currentColor == undefined ? true : false;
+  } 
 
   getCurrentColorClass(color:Color){
     if(color == this.currentColor){
