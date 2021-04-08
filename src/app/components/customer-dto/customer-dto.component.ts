@@ -9,9 +9,11 @@ import { CustomerDtoService } from 'src/app/services/customer-dto.service';
 })
 export class CustomerDtoComponent implements OnInit {
   customerDtos :CustomerDto[]
+  customerId=""
   constructor(private customerDtoService:CustomerDtoService) { }
 
   ngOnInit(): void {
+    this.getCustomerDetails();
   }
 
   getCustomerDetails(){

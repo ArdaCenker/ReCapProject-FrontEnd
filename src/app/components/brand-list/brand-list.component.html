@@ -2,17 +2,24 @@
     <label for="filterText" class="form-label">Marka ara</label>
     <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Marka adı girin">
 </div>  
+<div>
+    <button type="button" routerLink="/brands/add" class="btn btn-success">Marka Ekle</button>
+</div>
 <table class="table table-hover">
     <thead>
         <tr>
             <th scope="col"></th>
-            <th></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let brand of brands | filterBrandPipe:filterText" >
             <td>{{brand.brandName}}</td>
-            <td class="col-md-2"><button routerLink = "/cars/brand/{{brand.brandId}}" type="button" class="btn btn-xs btn-success">Araçları göster</button></td>
+            <td class="col-md-2"><button routerLink = "/cars/brand/{{brand.brandId}}" type="button" class="btn btn-xs btn-primary">Araçları göster</button></td>
+            <td class="col-md-1"><button type="button" class="btn btn-danger">Sil</button></td>
+            <td class="col-md-1"><button routerLink="/brands/update" type="button" class="btn btn-secondary">Güncelle</button></td>
         </tr>
     </tbody>
 </table>

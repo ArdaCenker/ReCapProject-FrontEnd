@@ -1,1 +1,6 @@
-<p>customer-dto works!</p>
+<select class="form-select" [(ngModel)]="customerId" style="width: 40%" aria-label="Default select example" >
+    <option selected>Customers</option>
+    <option *ngFor="let customer of customerDtos" [ngValue]="customer.customerId" >
+      {{ customer.customerFirstName }} {{ customer.customerLastName }}
+    </option>
+</select>

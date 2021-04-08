@@ -2,9 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarDto } from 'src/app/models/carDto';
+import { CustomerDto } from 'src/app/models/customerDto';
 import { Rental } from 'src/app/models/rental';
 import { RentalDto } from 'src/app/models/rentalDto';
+import { CustomerDtoService } from 'src/app/services/customer-dto.service';
 import { PaymentService } from 'src/app/services/payment.service';
+import { RentalDtoService } from 'src/app/services/rental-dto.service';
 import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
@@ -14,55 +17,70 @@ import { RentalService } from 'src/app/services/rental.service';
 })
 export class RentalComponent implements OnInit {
 
-  @Input() car:CarDto;
-  rentals:Rental[];
-  rentalDtos:RentalDto[];
-  rentDate:Date;
-  customerId:number;
-  returnDate:Date;
+  @Input() car: CarDto;
+  carRentalDetails: RentalDto[] = [];
+  customerDetails: CustomerDto[] = [];
+  dataLoaded = false;
+  customerId: number;
+  rentDate: Date;
+  returnDate: Date;
+  state:number = 1;
 
-  firstDateSelected:boolean=false;
+  firstDateSelected:boolean= false;
   minDate:string;
 
-  constructor(private rentalService:RentalService,
-    private paymentService:PaymentService,
-    private toastrService:ToastrService) {}
+  constructor(
+    private rentalDtoService : RentalDtoService,
+    private customerDtoService:CustomerDtoService,
+    private paymentService: PaymentService,
+    private toastrService:ToastrService
+  ) {}
+
+
+
 
   ngOnInit(): void {
-    this.getRentalDetails();
+    this.getCarRentalDetails();
+    this.getCustomerDetails();
   }
 
-  getRentals() {
-    this.rentalService.getRentals().subscribe((response)=>{
-      this.rentals=response.data
-    })
+
+  getCarRentalDetails() {
+    this.rentalDtoService.getRentalDetails().subscribe((response) => {
+      this.carRentalDetails = response.data;
+      this.dataLoaded = true;
+    });
   }
 
-  getRentalDetails(){
-    this.rentalService.getRentalDetails().subscribe((response)=>{
-      this.rentalDtos=response.data;
-    })
+
+  getCustomerDetails() {
+    this.customerDtoService.getCustomerDetails().subscribe((response) => {
+      this.customerDetails = response.data;
+    });
   }
 
-  addRental(){
-    let rental:Rental={
+
+  addRentalCar() {
+    let rental: Rental = {
       carId: this.car.id,
-      customerId:this.customerId,
-      rentDate :this.rentDate,
-      returnDate :this.returnDate
+      customerId: this.customerId,
+      rentDate: this.rentDate,
+      returnDate: this.returnDate,
     };
-
     this.paymentService.setRental(rental);
-    this.toastrService.success("İşlem başarılı, ödeme sayfasına yönlendiriliyorsunuz.")
+    this.toastrService.success('Kiralama oluşturuldu, ödeme sayfasına yönlendiriliyorsunuz.');
+      this.state =2;
   }
 
-  onChangeEvent(event:any){
+
+  onChangeEvent(event: any){
     this.minDate = event.target.value
     this.firstDateSelected = true
   }
 
+
   checkReturnDate(){
-    if(this.returnDate<this.rentDate){
+    if (this.returnDate < this.rentDate) {
       this.returnDate = this.rentDate
     }
   }

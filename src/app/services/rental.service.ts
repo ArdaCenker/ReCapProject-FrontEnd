@@ -20,18 +20,13 @@ export class RentalService {
     return this.httpClient.get<ListResponseModel<Rental>>(newPath);
   }
 
-  getRentalDetails():Observable<ListResponseModel<RentalDto>>{
-    let newPath= this.apiUrl+"getrentaldetails"
-    return this.httpClient.get<ListResponseModel<RentalDto>>(newPath);
-  }
-
   getRentalDetailsByCarId(carId:number){
     let newPath = this.apiUrl+"getrentaldetailsbycarid?carId="+carId;
     return this.httpClient.get<ListResponseModel<RentalDto>>(newPath)
   }
 
-  addRental(rental:Rental):Observable<ListResponseModel<Rental>>{
+  add(rental:Rental):Observable<ResponseModel>{
     let newPath= this.apiUrl+"addrental"
-    return this.httpClient.post<ListResponseModel<Rental>>(newPath,rental);
+    return this.httpClient.post<ResponseModel>(newPath,rental);
   }
 }

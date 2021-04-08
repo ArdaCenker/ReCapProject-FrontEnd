@@ -1,0 +1,24 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Renk Güncelle</h5></div>
+            <div class="card-body">
+                <form [formGroup]="colorUpdateForm">
+                    <div class="mb-3">
+                        <label for="colorName">Renk Adı</label>
+                        <div class="form-group">
+                            <select class="form-select" aria-label="Default select example" name="colorName" formControlName="colorId" [(ngModel)]="colorId">
+                              <option [ngValue]='color.colorId' *ngFor="let color of colors"> {{color.colorName}} </option>
+                            </select>
+                        </div>
+                        <label for="updateColorName"> Color Name: </label>
+                            <input type="text" id="updateColorName" class="form-control" formControlName="colorName" placeholder="Color Name" aria-label="updateColorName" aria-describedby="basic-addon2">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-success" (click)="update()">Güncelle</button>
+            </div>
+        </div>
+    </div>
+</div>

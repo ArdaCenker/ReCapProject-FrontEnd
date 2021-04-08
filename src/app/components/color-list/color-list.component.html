@@ -12,7 +12,9 @@
     <tbody>
         <tr *ngFor="let color of colors | filterColorPipe:filterText" >
             <td>{{color.colorName}}</td>
-            <td class="col-md-2"><button routerLink = "/cars/color/{{color.colorId}}" type="button" class="btn btn-xs btn-success">Araçları göster</button></td>
+            <td class="col-md-2"><button routerLink = "/cars/color/{{color.colorId}}" type="button" class="btn btn-xs btn-primary">Araçları göster</button></td>
+            <td class="col-md-1"><button type="button" class="btn btn-danger">Sil</button></td>
+            <td class="col-md-1"><button routerLink="/colors/update" type="button" class="btn btn-secondary">Güncelle</button></td>
         </tr>
     </tbody>
 </table>

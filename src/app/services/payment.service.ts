@@ -14,25 +14,28 @@ import { RentalService } from './rental.service';
 export class PaymentService {
 
   rental:Rental;
-  apiUrl = "https://localhost:44334/payments/"
+
+  apiUrl = "https://localhost:44334/api/payments/"
 
   constructor(private httpClient:HttpClient,
     private rentalService:RentalService,
     private toastrService:ToastrService) { }
 
   
-  addPayment(payment:Payment):Observable<ResponseModel>{
+  add(payment:Payment):Observable<ResponseModel>{
     let newPath = this.apiUrl + "add"
     return this.httpClient.post<ListResponseModel<Payment>>(newPath,payment);
   }
 
-  addRentalAfterPayment(payment:Payment){
-    this.addPayment(payment).subscribe((response)=>{
-      this.rentalService.addRental(this.rental).subscribe((response)=>
-      this.toastrService.success("İşlem başarılı"))})
+  addRentalAfterPayment(payment: Payment) {
+    this.add(payment).subscribe((response) => {
+      this.rentalService.add(this.rental).subscribe(response=>{
+        this.toastrService.success('Success');
+      });
+    });
   }
 
-  setRental(rental:Rental){
-    this.rental=rental;
+  setRental(rental:Rental) {
+    this.rental = rental;
   }
 }

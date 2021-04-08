@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,10 +20,20 @@ import { FilterColorPipePipe } from './pipes/filter-color-pipe.pipe';
 import { BrandListComponent } from './components/brand-list/brand-list.component'
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-
-import { ToastrModule } from 'ngx-toastr';
 import { PaymentComponent } from './components/payment/payment.component';
 import { CustomerDtoComponent } from './components/customer-dto/customer-dto.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { BrandDeleteComponent } from './components/brand-delete/brand-delete.component';
+import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { CarDeleteComponent } from './components/car-delete/car-delete.component';
+
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +54,15 @@ import { CustomerDtoComponent } from './components/customer-dto/customer-dto.com
     SidebarComponent,
     PaymentComponent,
     CustomerDtoComponent,
+    BrandAddComponent,
+    BrandUpdateComponent,
+    BrandDeleteComponent,
+    ColorDeleteComponent,
+    ColorAddComponent,
+    ColorUpdateComponent,
+    CarUpdateComponent,
+    CarAddComponent,
+    CarDeleteComponent,
   ],
   imports: [
     BrowserModule,
