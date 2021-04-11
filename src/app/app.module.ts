@@ -31,9 +31,16 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarDeleteComponent } from './components/car-delete/car-delete.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { UserInfoUpdateComponent } from './components/user-info-update/user-info-update.component';
 
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -63,6 +70,9 @@ import { ToastrModule } from 'ngx-toastr';
     CarUpdateComponent,
     CarAddComponent,
     CarDeleteComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserInfoUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +80,12 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["http://localhost:4200/"]
+      },
+    }),
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     }),

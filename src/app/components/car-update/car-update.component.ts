@@ -17,9 +17,7 @@ import { Color } from 'src/app/models/color';
 })
 export class CarUpdateComponent implements OnInit {
   
-  @Input() car: CarDto;
-  editCarForm: FormGroup;
-  state = 0;
+  @Input() car: Car;
   brands: Brand[];
   colors: Color[];
   carUpdateForm:FormGroup;
@@ -52,8 +50,8 @@ export class CarUpdateComponent implements OnInit {
     this.carUpdateForm= this.formBuilder.group({
       id:[this.car.id,Validators.required],
       modelYear:[this.car.modelYear,Validators.required],
-      brandName:[this.car.brandName,Validators.required],
-      colorName:[this.car.colorName,Validators.required],
+      brandId:[this.car.brandId,Validators.required],
+      colorId:[this.car.colorId,Validators.required],
       dailyPrice:[this.car.dailyPrice,Validators.required],
       description:[this.car.description,Validators.required]
     })

@@ -8,14 +8,16 @@
                         <label for="brandId">Marka Adı</label>
                         <div class="form-group">
                             <select class="form-select" formControlName="brandId" id='brandId'>
-                                <option [ngValue]='brand.brandId' *ngFor="let brand of brands"> {{brand.brandName}} </option>
+                                <option [ngValue]='brand.brandId' *ngFor="let brand of brands"> {{brand.brandId}} </option>
                             </select>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="colorId">Renk Kodu</label>
                         <div class="form-group">
-                            <input type="number" id="colorId" formControlName="colorId" class="form-control" placeholder="Renk Kodu"/>
+                            <select class="form-select" formControlName="colorId" id='colorId'>
+                                <option [ngValue]='color.colorId' *ngFor="let color of colors"> {{color.colorId}} </option>
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3">

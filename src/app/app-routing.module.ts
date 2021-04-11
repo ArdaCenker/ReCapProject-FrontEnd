@@ -10,8 +10,10 @@ import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RentalDtoComponent } from './components/rental-dto/rental-dto.component';
-import { RentalComponent } from './components/rental/rental.component';
+import { UserInfoUpdateComponent } from './components/user-info-update/user-info-update.component';
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},
@@ -28,7 +30,10 @@ const routes: Routes = [
   {path:"brands/add", component:BrandAddComponent},
   {path:"cars/update", component:CarUpdateComponent},
   {path:"colors/update", component:ColorUpdateComponent},
-  {path:"brands/update", component:BrandUpdateComponent}
+  {path:"brands/update", component:BrandUpdateComponent},
+  {path:"login", component:LoginComponent},
+  {path:"register", component:RegisterComponent},
+  {path:"useredit", component:UserInfoUpdateComponent}
 ];
 
 @NgModule({
